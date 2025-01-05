@@ -109,15 +109,16 @@ const Home2 = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black">
+      {/* Logo */}
       <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
-        <h1 className="text-2xl font-light tracking-[0.2em]">
+        <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
           <span className="font-medium">DREY</span>
           <span className="opacity-70">.MIDE</span>
         </h1>
         <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
       </div>
       {/* Fixed Navigation */}
-      <div className="fixed top-8 right-8 z-50 flex gap-4">
+      <div className="fixed top-8 right-3 md:right-8 z-50 flex gap-4">
         <button
           onClick={() => setShowGrid(!showGrid)}
           className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
@@ -133,7 +134,7 @@ const Home2 = () => {
       </div>
 
       {/* Section Counter */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
+      <div className="fixed md:left-8 left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
         {sections.map((_, index) => (
           <motion.button
             key={index}
@@ -166,7 +167,7 @@ const Home2 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/90 backdrop-blur-sm p-8 md:p-16 overflow-auto"
+            className="fixed inset-0 z-40 bg-black/90 backdrop-blur-sm p-4 md:p-16 overflow-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {sections.map((section, index) => (
@@ -239,7 +240,7 @@ const Home2 = () => {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-6xl md:text-8xl font-light mb-8"
+                  className="text-6xl md:text-8xl font-light mb-8 pr-6"
                 >
                   {sections[currentIndex].title}
                 </motion.h2>
@@ -273,12 +274,9 @@ const Home2 = () => {
             </div>
 
             {/* Project Number */}
-            <div className="absolute top-8 left-8 flex items-center gap-4">
+            <div className="absolute top-8 left-2 md:left-8 flex items-center gap-4">
               <span className="text-6xl font-light opacity-25">
                 {String(currentIndex + 1).padStart(2, "0")}
-              </span>
-              <span className="text-sm uppercase tracking-wider opacity-50">
-                Project
               </span>
             </div>
           </motion.div>
