@@ -11,7 +11,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ type: "tween", duration: 0.3 }}
-          className="fixed inset-0 bg-black/95 backdrop-blur-lg z-50"
+          className="fixed inset-0 backdrop-blur-lg z-50"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
-                  className="text-sm hover:text-gray-300 transition-colors"
+                  className="text-sm md:text-lg uppercase hover:text-gray-300 transition-colors"
                 >
                   {item.name}
                 </motion.a>
