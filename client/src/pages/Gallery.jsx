@@ -204,7 +204,7 @@ const Gallery = () => {
         <div ref={loader} className="flex justify-center py-8">
           {isLoading && (
             <div className="flex items-center space-x-2">
-              <Loader className="animate-spin" size={24} />
+              <Loader className="animate-spin" size={20} />
               <span className="text-sm text-gray-600">
                 {imageData.length <= 0
                   ? "Loading images"
@@ -213,7 +213,7 @@ const Gallery = () => {
             </div>
           )}
           {!hasMore && !isLoading && imageData.length > 0 && (
-            <p className="text-gray-600">No more images to load</p>
+            <p className="text-xs text-gray-600">No more images to load</p>
           )}
         </div>
       </div>
