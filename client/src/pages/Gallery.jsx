@@ -162,7 +162,7 @@ const Gallery = () => {
     return (
       <AnimatePresence>
         <motion.div
-          className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-300 mb-2 md:mb-4"
+          className="relative group cursor-pointer overflow-hidden bg-gray-300 mb-2 md:mb-4"
           onClick={() => setSelectedImage(image)}
         >
           <div className="relative">
