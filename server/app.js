@@ -1,5 +1,4 @@
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
@@ -27,5 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api', indexRouter);
+
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`Server is running on port ${process.env.PORT || 3001}`);
+})
 
 module.exports = app;
