@@ -240,7 +240,7 @@ const Home2 = () => {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-6xl md:text-8xl font-light mb-8 pr-6"
+                  className="text-5xl md:text-8xl font-light mb-8 pr-6"
                 >
                   {sections[currentIndex].title}
                 </motion.h2>
