@@ -111,10 +111,12 @@ const Home2 = () => {
     <div className="relative h-screen w-screen overflow-hidden bg-black">
       {/* Logo */}
       <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
-        <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
-          <span className="font-medium">DREY</span>
-          <span className="opacity-70">.MIDE</span>
-        </h1>
+        <Link to="/">
+          <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
+            <span className="font-medium">DREY</span>
+            <span className="opacity-70">.MIDE</span>
+          </h1>
+        </Link>
         <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
       </div>
       {/* Fixed Navigation */}
@@ -254,7 +256,7 @@ const Home2 = () => {
                 </motion.p>
 
                 {/* View Project Button */}
-                <Link to={sections[currentIndex].title.toLowerCase()}>
+                <Link to={`${sections[currentIndex].title.toLowerCase()}`}>
                   <motion.button
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

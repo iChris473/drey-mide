@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, Video, Globe, X, Clock, Menu, Grid } from "lucide-react";
 import MobileNav from "../components/MobileNav";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,6 +69,16 @@ const AboutPage = () => {
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+      </div>
+
+      <div className="fixed top-8 left-3 md:left-8 z-50 hidden md:flex flex-col  items-center">
+        <Link to="/">
+          <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
+            <span className="font-medium">DREY</span>
+            <span className="opacity-70">.MIDE</span>
+          </h1>
+        </Link>
+        <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
       </div>
 
       <div className="relative z-10">
