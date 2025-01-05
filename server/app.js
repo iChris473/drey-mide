@@ -8,7 +8,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 
 var app = express();
-const allowedOrigins = ['http://localhost:5174', 'http://another-example.com']; // Add all the URLs you want to allow
+const allowedOrigins = ['http://localhost:5174', 'https://drey-mide.vercel.app/']; // Add all the URLs you want to allow
 
 app.use(cors({
     origin: function (origin, callback) {
