@@ -144,7 +144,7 @@ const Home2 = () => {
             }}
             className="relative w-12 h-6 flex items-center"
           >
-            <span className="text-sm font-light mr-2 text-white/50">
+            <span className="text-xs md:text-sm font-light mr-2 text-white/50">
               {String(index + 1).padStart(2, "0")}
             </span>
             <motion.div
