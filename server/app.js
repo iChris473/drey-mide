@@ -7,7 +7,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 
 var app = express();
-const allowedOrigins = ['http://localhost:5174', 'https://drey-mide.vercel.app', "https://www.drey-mide.vercel.app", "www.drey-mide.vercel.app/"];
+const allowedOrigins = ['http://localhost:5174', 'https://drey-mide.vercel.app', "https://www.drey-mide.vercel.app", "www.drey-mide.vercel.app"];
 
 app.use(cors({
     origin: function (origin, callback) {
