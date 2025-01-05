@@ -1,9 +1,33 @@
-import { Menu, X, Instagram, Twitter, Mail } from "lucide-react";
+import { useState } from "react";
+import {
+  Menu,
+  X,
+  Instagram,
+  Twitter,
+  Mail,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import navLinks from "../../utils/navlinks";
 
 const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Split navigation links into main and dropdown
+  const mainNavLinks = [
+    { name: "Mines", href: "/works/mines" },
+    { name: "Industrial Energy", href: "/works/industrial energy" },
+    { name: "Conference", href: "/works/conference" },
+  ];
+
+  const dropdownLinks = [
+    { name: "Sustaniable Development", href: "/works/sustainable development" },
+    { name: "Potraits", href: "/works/potraits" },
+    { name: "AEF", href: "/works/aef" },
+    { name: "Contact", href: "/" },
+  ];
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -11,11 +35,9 @@ const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
       transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
       className="fixed top-0 left-0 w-full z-50"
     >
-      {/* Gradient background with blur */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-md" />
 
       <div className="relative flex justify-between items-center px-6 md:px-12 py-6">
-        {/* Logo and Navigation */}
         <div className="flex items-center space-x-16">
           <Link to="/" className="group">
             <motion.div className="relative" transition={{ duration: 0.3 }}>
@@ -31,9 +53,8 @@ const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-10">
-            {navLinks.map((item, index) => (
+            {mainNavLinks.map((item, index) => (
               <motion.a
                 key={index}
                 href={item.href}
@@ -51,12 +72,54 @@ const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
                 />
               </motion.a>
             ))}
+
+            {/* More Dropdown */}
+            <div className="relative">
+              <motion.button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                onBlur={() => setTimeout(() => setIsDropdownOpen(false), 200)}
+                className="flex items-center space-x-1 group"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <span className="text-sm font-light tracking-wider text-black/80 group-hover:text-black transition-colors">
+                  More
+                </span>
+                {isDropdownOpen ? (
+                  <ChevronUp size={16} className="text-black/70" />
+                ) : (
+                  <ChevronDown size={16} className="text-black/70" />
+                )}
+              </motion.button>
+
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-lg"
+                  >
+                    {dropdownLinks.map((item, index) => (
+                      <motion.a
+                        key={index}
+                        href={item.href}
+                        className="block px-4 py-2 text-sm font-light text-black/80 hover:text-black hover:bg-black/5 transition-colors"
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.name}
+                      </motion.a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
         </div>
 
-        {/* Social Links and Mobile Menu */}
         <div className="flex items-center space-x-8">
-          {/* Desktop Social Links */}
           <div className="hidden md:flex items-center space-x-8">
             {[
               {
