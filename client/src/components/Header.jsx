@@ -2,7 +2,7 @@
 import { Menu, X } from "lucide-react";
 import { Instagram, Twitter, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import navLinks from "../../utils/navlinks";
 const Header = ({ setIsMenuOpen, isMenuOpen }) => {
   return (
     <header className="absolute top-0 left-0 w-full z-50">
@@ -16,19 +16,13 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
           </h1>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {[
-              "Mines",
-              "Industrial Energy",
-              "Conference",
-              "Potraits",
-              "Contact",
-            ].map((item) => (
+            {navLinks.map((item, index) => (
               <Link
-                key={item}
-                to={`/gallery/${item.toLowerCase()}`}
+                key={index}
+                to={item.href}
                 className="text-white/90 hover:text-white transition-colors font-light text-sm"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </nav>

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Instagram, Twitter, Mail } from "lucide-react";
+import navLinks from "../../utils/navlinks";
 
 function MobileNav({ isMenuOpen, setIsMenuOpen }) {
   return (
@@ -28,16 +29,16 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
             </motion.button>
 
             <nav className="flex flex-col items-center space-y-6">
-              {["Work", "About", "Services", "Contact"].map((item, index) => (
+              {navLinks.map((item, index) => (
                 <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={index}
+                  href={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
                   className="text-2xl hover:text-gray-300 transition-colors"
                 >
-                  {item}
+                  {item.name}
                 </motion.a>
               ))}
             </nav>
@@ -51,7 +52,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
               {[
                 { icon: Instagram, href: "https://instagram.com" },
                 { icon: Twitter, href: "https://twitter.com" },
-                { icon: Mail, href: "mailto:hello@lenscraft.com" },
+                { icon: Mail, href: "mailto:hello@drey.com" },
               ].map(({ icon: Icon, href }, index) => (
                 <motion.a
                   key={index}

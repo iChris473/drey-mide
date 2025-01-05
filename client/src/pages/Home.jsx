@@ -41,6 +41,12 @@ const Home = () => {
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
     },
+    {
+      title: "AEF",
+      description: "A collection of AEF events",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736009692/drey/AEF/WhatsApp_Image_2024-12-16_at_11.26.36_eme05k.jpg",
+    },
   ]);
   const navigate = useNavigate();
 
