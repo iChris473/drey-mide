@@ -189,7 +189,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Gallery Grid */}
-      <div className="container mx-auto px-4 pt-20 md:pt-32 pb-12">
+      <div className="container mx-auto md:px-4 pt-20 md:pt-32 pb-12">
         <div className="flex gap-2 md:gap-4">
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex-1">
