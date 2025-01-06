@@ -10,6 +10,7 @@ const Home2 = () => {
   const [showGrid, setShowGrid] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredSection, setHoveredSection] = useState(null);
 
   const sections = [
     {
@@ -36,7 +37,7 @@ const Home2 = () => {
       description:
         "Capturing the essence and personality of individuals through portrait photography.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736121692/drey/potraits/DSC09633_dlifwi.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
       stats: { projects: 10, photos: 70, year: 2023 },
     },
     {
@@ -117,7 +118,7 @@ const Home2 = () => {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black">
+    <div className="min-h-screen bg-white text-white">
       {/* Logo */}
       <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
         <Link to="/">
@@ -128,6 +129,7 @@ const Home2 = () => {
         </Link>
         <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
       </div>
+
       {/* Fixed Navigation */}
       <div className="fixed top-8 right-3 md:right-8 z-50 flex gap-4">
         <button
@@ -144,30 +146,54 @@ const Home2 = () => {
         </button>
       </div>
 
-      {/* Section Counter */}
-      <div className="fixed md:left-8 left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
-        {sections.map((_, index) => (
-          <motion.button
-            key={index}
-            onClick={() => {
-              setIsAutoPlaying(false);
-              setCurrentIndex(index);
-            }}
-            className="relative w-12 h-6 flex items-center"
+      {/* Main Stacked Sections */}
+      <div className="pt- ">
+        {sections.map((section, index) => (
+          <motion.div
+            key={section.id}
+            className="relative h-screen w-full overflow-hidden group cursor-pointer"
+            onHoverStart={() => setHoveredSection(index)}
+            onHoverEnd={() => setHoveredSection(null)}
           >
-            <span className="text-xs md:text-sm font-light mr-2 text-white/50">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <motion.div
-              className="h-[1px] bg-white"
-              initial={{ width: 0 }}
-              animate={{
-                width: currentIndex === index ? 24 : 12,
-                opacity: currentIndex === index ? 1 : 0.5,
-              }}
-              transition={{ duration: 0.3 }}
+            <img
+              src={section.image}
+              alt={section.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </motion.button>
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" />
+
+            <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16">
+              <div className="max-w-4xl">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: hoveredSection === index ? 100 : 0 }}
+                  className="h-[1px] bg-white/50 mb-8"
+                  transition={{ duration: 0.5 }}
+                />
+                <h2 className="text-4xl  md:text-6xl font-light mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                  {section.title}
+                </h2>
+                <p className="text-sm md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {section.description}
+                </p>
+                <Link to={`${section.title.toLowerCase()}`}>
+                  <motion.button className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    <span className="text-sm uppercase tracking-wider">
+                      View Gallery
+                    </span>
+                    <ArrowRight className="transition-transform group-hover:translate-x-2" />
+                  </motion.button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Section Number */}
+            <div className="absolute top-8 left-8 opacity-25">
+              <span className="text-6xl font-light">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+          </motion.div>
         ))}
       </div>
 
@@ -181,13 +207,10 @@ const Home2 = () => {
             className="fixed inset-0 z-40 bg-black/90 backdrop-blur-sm p-4 md:p-16 overflow-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {sections.map((section, index) => (
+              {sections.map((section) => (
                 <motion.button
                   key={section.id}
-                  onClick={() => {
-                    setCurrentIndex(index);
-                    setShowGrid(false);
-                  }}
+                  onClick={() => setShowGrid(false)}
                   className="group relative aspect-square overflow-hidden rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -214,109 +237,6 @@ const Home2 = () => {
         )}
       </AnimatePresence>
 
-      {/* Main Slider */}
-      <div className="relative h-full w-full">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.5 },
-              scale: { duration: 0.5 },
-            }}
-            className="absolute inset-0"
-          >
-            {/* Background Image */}
-            <img
-              src={sections[currentIndex].image}
-              alt={sections[currentIndex].title}
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent" />
-
-            {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-center px-2 md:px-16">
-              <div className="max-w-4xl md:ml-6 ml-20">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: 100 }}
-                  className="h-[1px] bg-white/50 mb-8"
-                />
-                <motion.h2
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-5xl md:text-8xl font-light mb-8 pr-6"
-                >
-                  {sections[currentIndex].title}
-                </motion.h2>
-                <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-sm md:text-xl text-white/80 max-w-2xl mb-12 pr-14 md:pr-0"
-                >
-                  {sections[currentIndex].description}
-                </motion.p>
-
-                {/* View Project Button */}
-                <Link to={`${sections[currentIndex].title.toLowerCase()}`}>
-                  <motion.button
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.9 }}
-                    className="mt-12 flex items-center gap-2 group"
-                  >
-                    <span className="text-sm uppercase tracking-wider">
-                      View
-                    </span>
-                    <ArrowRight
-                      size={20}
-                      className="transition-transform group-hover:translate-x-2"
-                    />
-                  </motion.button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Project Number */}
-            <div className="absolute top-8 left-2 md:left-8 flex items-center gap-4">
-              <span className="text-6xl font-light opacity-25">
-                {String(currentIndex + 1).padStart(2, "0")}
-              </span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation Arrows */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="absolute z-30 right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8"
-      >
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => paginate(-1)}
-          className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
-        >
-          <ArrowLeft size={24} className="text-white" />
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => paginate(1)}
-          className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
-        >
-          <ArrowRight size={24} className="text-white" />
-        </motion.button>
-      </motion.div>
       <MobileNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </div>
   );
