@@ -171,7 +171,7 @@ const Home2 = () => {
                   className="h-[1px] bg-white/50 mb-8"
                   transition={{ duration: 0.5 }}
                 /> */}
-                <h2 className="text-4xl md:text-6xl font-light mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                <h2 className="text-6xl font-light mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                   {section.title}
                 </h2>
                 <p className="text-sm md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
