@@ -5,6 +5,7 @@ import Header2 from "../components/Header2";
 import MobileNav from "../components/MobileNav";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Gallery = () => {
   const { type } = useParams();
@@ -189,7 +190,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Gallery Grid */}
-      <div className="container mx-auto md:px-4 pt-20 md:pt-32 pb-12">
+      <div className="container mx-auto md:px-4 pt-20 md:pt-32 pb-12 min-h-screen">
         <div className="flex gap-2">
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex-1">
@@ -212,9 +213,9 @@ const Gallery = () => {
               </span>
             </div>
           )}
-          {!hasMore && !isLoading && imageData.length > 0 && (
+          {/* {!hasMore && !isLoading && imageData.length > 0 && (
             <p className="text-xs text-gray-600">No more images to load</p>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -244,6 +245,7 @@ const Gallery = () => {
       )}
 
       <MobileNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Footer />
     </div>
   );
 };

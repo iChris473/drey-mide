@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Grid, X, Menu } from "lucide-react";
+import { ArrowRight, Grid, X, Menu, FileText } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import MobileNav from "../components/MobileNav";
+import pdf from "../assets/pe.pdf";
+import Footer from "../components/Footer";
 
 const Home2 = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const [showGrid, setShowGrid] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
+  const [showPDF, setShowPDF] = useState(false);
   const navigate = useNavigate();
   const sections = [
     {
@@ -20,7 +20,6 @@ const Home2 = () => {
         "A collection of mining photography showcasing the scale and complexity of modern mining operations.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
-      stats: { projects: 24, photos: 150, year: 2023 },
     },
     {
       id: "industrial",
@@ -29,7 +28,16 @@ const Home2 = () => {
         "Industrial landscapes and machinery captured in their raw, powerful form.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010762/drey/industrial%20energy/WhatsApp_Image_2024-12-16_at_10.39.34_s1tr5s.jpg",
-      stats: { projects: 18, photos: 120, year: 2023 },
+    },
+    {
+      id: "professional",
+      title: "Professional Experience",
+      description:
+        "A showcase of professional projects and experiences across various industries.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736167722/drey/professional%20experience/WhatsApp_Image_2025-01-06_at_11.32.45_AM_y0u5nz.jpg",
+      pdfUrl: pdf,
+      type: "pdf",
     },
     {
       id: "portraits",
@@ -38,7 +46,6 @@ const Home2 = () => {
         "Capturing the essence and personality of individuals through portrait photography.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
-      stats: { projects: 10, photos: 70, year: 2023 },
     },
     {
       id: "segilola",
@@ -47,7 +54,6 @@ const Home2 = () => {
         "A comprehensive look into the Segilola project, documenting its development and impact.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010906/drey/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_kd6vpq.jpg",
-      stats: { projects: 12, photos: 85, year: 2024 },
     },
     {
       id: "sustainable",
@@ -56,7 +62,6 @@ const Home2 = () => {
         "Showcasing projects that balance industrial progress with environmental responsibility.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
-      stats: { projects: 15, photos: 95, year: 2024 },
     },
     {
       id: "conferences",
@@ -65,7 +70,6 @@ const Home2 = () => {
         "Documenting key industry events and professional gatherings.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
-      stats: { projects: 30, photos: 200, year: 2024 },
     },
     {
       id: "aef",
@@ -74,47 +78,15 @@ const Home2 = () => {
         "Coverage of AEF events, highlighting key moments and discussions.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736009692/drey/AEF/WhatsApp_Image_2024-12-16_at_11.26.36_eme05k.jpg",
-      stats: { projects: 20, photos: 140, year: 2024 },
     },
   ];
 
-  useEffect(() => {
-    let interval;
-    if (isAutoPlaying) {
-      interval = setInterval(() => {
-        paginate(1);
-      }, 5000);
+  const handleSectionClick = (section) => {
+    if (section.type === "pdf") {
+      setShowPDF(true);
+    } else {
+      navigate(`/works/${section.title.toLowerCase()}`);
     }
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, currentIndex]);
-
-  const paginate = (newDirection) => {
-    setIsAutoPlaying(false);
-    setDirection(newDirection);
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex + newDirection + sections.length) % sections.length
-    );
-  };
-
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-      scale: 1.2,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-      scale: 0.8,
-    }),
   };
 
   return (
@@ -147,14 +119,14 @@ const Home2 = () => {
       </div>
 
       {/* Main Stacked Sections */}
-      <div className="pt- ">
+      <div className="pt-0">
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
             className="relative h-screen w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
-            onClick={() => navigate(`/works/${section.title.toLowerCase()}`)}
+            onClick={() => handleSectionClick(section)}
           >
             <img
               src={section.image}
@@ -165,26 +137,22 @@ const Home2 = () => {
 
             <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
               <div className="max-w-4xl">
-                {/* <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: hoveredSection === index ? 100 : 0 }}
-                  className="h-[1px] bg-white/50 mb-8"
-                  transition={{ duration: 0.5 }}
-                /> */}
-                <h2 className="text-6xl font-light mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                <h2 className="text-7xl md:text-8xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                   {section.title}
                 </h2>
-                <p className="text-sm md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                   {section.description}
                 </p>
-                <Link to={`/works/${section.title.toLowerCase()}`}>
-                  <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    <span className="text-sm uppercase tracking-wider">
-                      View Gallery
-                    </span>
+                <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                  <span className="text-sm uppercase tracking-wider">
+                    {section.type === "pdf" ? "View" : "View Gallery"}
+                  </span>
+                  {section.type === "pdf" ? (
+                    <FileText />
+                  ) : (
                     <ArrowRight className="transition-transform group-hover:translate-x-2" />
-                  </motion.button>
-                </Link>
+                  )}
+                </motion.button>
               </div>
             </div>
 
@@ -197,6 +165,35 @@ const Home2 = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* PDF Viewer Modal */}
+      <AnimatePresence>
+        {showPDF && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col"
+          >
+            <div className="flex justify-between items-center p-4 bg-black/50">
+              <h3 className="text-xl">Professional Experience</h3>
+              <button
+                onClick={() => setShowPDF(false)}
+                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="flex-1 p-4">
+              <iframe
+                src={sections.find((s) => s.id === "professional").pdfUrl}
+                className="w-full h-full rounded-lg"
+                title="Professional Experience PDF"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Grid View */}
       <AnimatePresence>
@@ -239,6 +236,7 @@ const Home2 = () => {
       </AnimatePresence>
 
       <MobileNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <Footer />
     </div>
   );
 };
