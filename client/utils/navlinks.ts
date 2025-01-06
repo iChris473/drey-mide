@@ -5,6 +5,7 @@
     { name: "Sustaniable Development", href: "/works/sustainable development" },
     { name: "Portraits", href: "/works/portraits" },
     { name: "AEF", href: "/works/aef" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/" },
   ];
 
