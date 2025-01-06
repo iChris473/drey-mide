@@ -57,7 +57,7 @@ const AboutPage = () => {
       <div className="fixed top-8 right-3 md:right-8 z-50 flex gap-4">
         <button
           onClick={() => {
-            window.location.href = "/works";
+            window.location.href = "/";
           }}
           className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
         >
