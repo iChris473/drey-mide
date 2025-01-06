@@ -176,7 +176,7 @@ const Home2 = () => {
             className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col"
           >
             <div className="flex justify-between items-center p-4 bg-black/50">
-              <h3 className="text-xl">Professional Experience</h3>
+              <h3 className="text-sm md:text-xl">Professional Experience</h3>
               <button
                 onClick={() => setShowPDF(false)}
                 className="p-2 hover:bg-white/10 rounded-full transition-colors"

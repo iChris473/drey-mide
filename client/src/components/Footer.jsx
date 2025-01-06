@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-start">
             <Link
               to="/"
-              className="text-xl font-light tracking-[0.2em] text-black hover:opacity-80 transition-opacity"
+              className="text-xs md:text-sm font-light tracking-[0.2em] text-black hover:opacity-80 transition-opacity"
             >
               <span className="font-medium">DREY</span>
               <span className="opacity-70">.MIDE</span>
@@ -26,7 +26,7 @@ const Footer = () => {
               href="mailto:your.email@example.com"
               className="hover:text-black transition-colors p-2"
             >
-              <Mail size={20} />
+              <Mail size={14} />
             </a>
             <a
               href="https://instagram.com"
@@ -34,7 +34,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-black transition-colors p-2"
             >
-              <Instagram size={20} />
+              <Instagram size={14} />
             </a>
             <a
               href="https://twitter.com"
@@ -42,7 +42,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-black transition-colors p-2"
             >
-              <Twitter size={20} />
+              <Twitter size={14} />
             </a>
           </div>
 
