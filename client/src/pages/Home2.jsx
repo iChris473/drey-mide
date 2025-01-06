@@ -17,7 +17,7 @@ const Home2 = () => {
       id: "mines",
       title: "Mines",
       description:
-        "A collection of mining photography showcasing the scale and complexity of modern mining operations.",
+        "A collection of mines photography showcasing the scale and complexity of modern mines operations.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
     },
@@ -123,7 +123,7 @@ const Home2 = () => {
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
-            className="relative h-screen w-full overflow-hidden group cursor-pointer"
+            className="relative h-[70vh] w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
             onClick={() => handleSectionClick(section)}
