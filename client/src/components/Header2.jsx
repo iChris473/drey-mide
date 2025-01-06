@@ -26,7 +26,8 @@ const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
     { name: "Sustaniable Development", href: "/works/sustainable development" },
     { name: "Sustaniable Development", href: "/works/sustainable development" },
     { name: "Exhibition / Book Launch", href: "/works/exhibition" },
-    { name: "About", href: "/about" },
+    { name: "Youth Development", href: "/works/youth dev" },
+    { name: "About", href: "/" },
   ];
 
   return (

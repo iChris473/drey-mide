@@ -70,6 +70,12 @@ const Home2 = () => {
       title: "Exhibition / Book Launch",
       description:
         "Highlights from various exhibitions and book launch events.",
+      image: "",
+    },
+    {
+      id: "youth dev",
+      title: "Youth Development",
+      description: "Documenting youth development programs and initiatives.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191234/drey/exhibition/WhatsApp_Image_2025-01-06_at_5.31.26_PM_3_pogpa4.jpg",
     },

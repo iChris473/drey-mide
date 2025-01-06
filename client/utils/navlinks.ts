@@ -6,6 +6,7 @@
     { name: "Sustaniable Development", href: "/works/sustainable development" },
     { name: "Sustaniable Development", href: "/works/sustainable development" },
     { name: "Exhibition / Book Launch", href: "/works/exhibition" },
+    { name: "Youth Development", href: "/works/youth dev" },
     { name: "About", href: "/about" },
   ];
 
