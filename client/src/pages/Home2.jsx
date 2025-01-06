@@ -12,23 +12,8 @@ const Home2 = () => {
   const [hoveredSection, setHoveredSection] = useState(null);
   const [showPDF, setShowPDF] = useState(false);
   const navigate = useNavigate();
+
   const sections = [
-    {
-      id: "mines",
-      title: "Mines",
-      description:
-        "A collection of mines photography showcasing the scale and complexity of modern mines operations.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
-    },
-    {
-      id: "industrial",
-      title: "Industrial Energy",
-      description:
-        "Industrial landscapes and machinery captured in their raw, powerful form.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010762/drey/industrial%20energy/WhatsApp_Image_2024-12-16_at_10.39.34_s1tr5s.jpg",
-    },
     {
       id: "professional",
       title: "Professional Experience",
@@ -40,28 +25,20 @@ const Home2 = () => {
       type: "pdf",
     },
     {
-      id: "portraits",
-      title: "Portraits",
+      id: "mines",
+      title: "Mines",
       description:
-        "Capturing the essence and personality of individuals through portrait photography.",
+        "A collection of mines photography showcasing the scale and complexity of modern mines operations.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
     },
     {
-      id: "segilola",
-      title: "Segilola",
+      id: "industrial energy",
+      title: "Industrial Energy",
       description:
-        "A comprehensive look into the Segilola project, documenting its development and impact.",
+        "Industrial landscapes and machinery captured in their raw, powerful form.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010906/drey/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_kd6vpq.jpg",
-    },
-    {
-      id: "sustainable",
-      title: "Sustainable Development",
-      description:
-        "Showcasing projects that balance industrial progress with environmental responsibility.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
     },
     {
       id: "conferences",
@@ -71,13 +48,30 @@ const Home2 = () => {
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
     },
+
     {
-      id: "aef",
-      title: "AEF",
+      id: "sustainable development",
+      title: "Sustainable Development",
       description:
-        "Coverage of AEF events, highlighting key moments and discussions.",
+        "Showcasing projects that balance industrial progress with environmental responsibility.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736009692/drey/AEF/WhatsApp_Image_2024-12-16_at_11.26.36_eme05k.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
+    },
+    {
+      id: "portraits",
+      title: "Portraits",
+      description:
+        "Capturing the essence and personality of individuals through portrait photography.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
+    },
+    {
+      id: "exhibition",
+      title: "Exhibition / Book Launch",
+      description:
+        "Highlights from various exhibitions and book launch events.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191234/drey/exhibition/WhatsApp_Image_2025-01-06_at_5.31.26_PM_3_pogpa4.jpg",
     },
   ];
 
@@ -85,7 +79,7 @@ const Home2 = () => {
     if (section.type === "pdf") {
       setShowPDF(true);
     } else {
-      navigate(`/works/${section.title.toLowerCase()}`);
+      navigate(`/works/${section.id.toLowerCase()}`);
     }
   };
 
@@ -123,7 +117,7 @@ const Home2 = () => {
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
-            className="relative h-[70vh] w-full overflow-hidden group cursor-pointer"
+            className="relative h-[50vh] w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
             onClick={() => handleSectionClick(section)}
@@ -137,7 +131,7 @@ const Home2 = () => {
 
             <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
               <div className="max-w-4xl">
-                <h2 className="text-7xl md:text-8xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                   {section.title}
                 </h2>
                 <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
