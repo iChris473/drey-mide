@@ -31,6 +31,15 @@ const Home2 = () => {
       stats: { projects: 18, photos: 120, year: 2023 },
     },
     {
+      id: "portraits",
+      title: "Portraits",
+      description:
+        "Capturing the essence and personality of individuals through portrait photography.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736121692/drey/potraits/DSC09633_dlifwi.jpg",
+      stats: { projects: 10, photos: 70, year: 2023 },
+    },
+    {
       id: "segilola",
       title: "Segilola",
       description:
@@ -45,7 +54,7 @@ const Home2 = () => {
       description:
         "Showcasing projects that balance industrial progress with environmental responsibility.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010889/drey/sustainable%20development/WhatsApp_Image_2024-12-16_at_10.46.56_g070md.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
       stats: { projects: 15, photos: 95, year: 2024 },
     },
     {
