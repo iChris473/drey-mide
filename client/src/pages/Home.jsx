@@ -78,7 +78,7 @@ const Home = () => {
       title: "Youth Development",
       description: "Documenting youth development programs and initiatives.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191234/drey/exhibition/WhatsApp_Image_2025-01-06_at_5.31.26_PM_3_pogpa4.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191223/drey/youth%20dev/WhatsApp_Image_2025-01-06_at_5.31.23_PM_qvhfpj.jpg",
     },
   ];
 
