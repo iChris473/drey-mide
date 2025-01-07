@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Grid, X, Menu, FileText } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import MobileNav from "../components/MobileNav";
-import pdf from "../assets/pe.pdf";
 import Footer from "../components/Footer";
 
-const Home2 = () => {
+const Conferences = () => {
   const [showGrid, setShowGrid] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
@@ -15,79 +14,25 @@ const Home2 = () => {
 
   const sections = [
     {
-      id: "professional",
-      title: "Professional Experience",
+      id: "aef",
+      title: "AEF",
       description:
-        "A showcase of professional projects and experiences across various industries.",
+        "A showcase of AEF conferences and events across various industries.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736167722/drey/professional%20experience/WhatsApp_Image_2025-01-06_at_11.32.45_AM_y0u5nz.jpg",
-      pdfUrl: pdf,
-      type: "pdf",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736190949/drey/conferences/AEF/WhatsApp_Image_2024-12-16_at_11.26.18_1_si8dc1.jpg",
     },
     {
-      id: "mines",
-      title: "Mines",
+      id: "afnis",
+      title: "AFNIS",
       description:
-        "A collection of mines photography showcasing the scale and complexity of modern mines operations.",
+        "Explore the African Natural Resources and Energy Investment Summit and their impact on technology and society.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
-    },
-    {
-      id: "industrial energy",
-      title: "Industrial Energy",
-      description:
-        "Industrial landscapes and machinery captured in their raw, powerful form.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736190895/drey/industrial%20energy/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_igibw7.jpg",
-    },
-    {
-      id: "conferences",
-      title: "Conferences",
-      description:
-        "Documenting key industry events and professional gatherings.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
-    },
-
-    {
-      id: "sustainable development",
-      title: "Sustainable Development",
-      description:
-        "Showcasing projects that balance industrial progress with environmental responsibility.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
-    },
-    {
-      id: "portraits",
-      title: "Portraits",
-      description:
-        "Capturing the essence and personality of individuals through portrait photography.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
-    },
-    {
-      id: "exhibition",
-      title: "Exhibition / Book Launch",
-      description:
-        "Highlights from various exhibitions and book launch events.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736194418/drey/exhibition/WhatsApp_Image_2025-01-06_at_9.03.39_PM_3_ba5xmb.jpg",
-    },
-    {
-      id: "youth dev",
-      title: "Youth Development",
-      description: "Documenting youth development programs and initiatives.",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191234/drey/exhibition/WhatsApp_Image_2025-01-06_at_5.31.26_PM_3_pogpa4.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736238682/drey/conferences/AFNIS/_51A5969_cqhkhl.jpg",
     },
   ];
 
   const handleSectionClick = (section) => {
-    if (section.type === "pdf") {
-      setShowPDF(true);
-    } else {
-      navigate(`/works/${section.id.toLowerCase()}`);
-    }
+    navigate(`/works/conferences/${section.id.toLowerCase()}`);
   };
 
   return (
@@ -244,4 +189,4 @@ const Home2 = () => {
   );
 };
 
-export default Home2;
+export default Conferences;

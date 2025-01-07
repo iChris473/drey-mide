@@ -27,9 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api', indexRouter);
-
-app.listen(process.env.PORT || 3001, () => {
-    console.log(`Server is running on port ${process.env.PORT || 3001}`);
+const PORT = 3000;
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT || PORT}`);
 })
 
 module.exports = app;

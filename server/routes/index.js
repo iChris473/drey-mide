@@ -15,9 +15,11 @@ router.get('/get-images', (req, res, next) => {
     return;
   }
   const { search, per_page, next_cursor } = req.query;
+  const dir = search == "aef" | "afnis" ? "drey/conferences" : "drey";
+
   const searchOptions = {
     type: 'upload',
-    prefix: `drey/${search}`,
+    prefix: `${dir}/${search}`,
     max_results: per_page ?? 5,
   };
   if (next_cursor != "null" && next_cursor != "undefined") {
@@ -28,7 +30,6 @@ router.get('/get-images', (req, res, next) => {
       console.log(error);
       res.status(500).json({ error });
     } else {
-      console.log(result.next_cursor);
       res.json({
         next_cursor: result.next_cursor,
         result: result.resources,

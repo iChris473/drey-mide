@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Gallery from "./pages/Gallery.jsx";
 import AboutPage from "./pages/About.jsx";
-import Home2 from "./pages/Home2.jsx";
+import Home from "./pages/Home.jsx";
+import Conferences from "./pages/Conference.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,8 +13,10 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<AboutPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/works" element={<Home />} />
+        <Route path="/works/conferences" element={<Conferences />} />
+        <Route path="/works/conferences/:type" element={<Gallery />} />
         <Route path="/works/:type" element={<Gallery />} />
-        <Route path="/works" element={<Home2 />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
