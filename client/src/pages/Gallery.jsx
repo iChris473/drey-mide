@@ -19,42 +19,7 @@ const Gallery = () => {
   const [imageData, setImageData] = useState([]);
   const [columns, setColumns] = useState([[], [], []]);
   const loader = useRef(null);
-
-  // const PEXELS_API = "https://api.pexels.com/v1";
-  // const PEXELS_API_KEY =
-  //   "mO2nhmyGs04O0wfP6YOIfe5UfTY98yaNmXTW1eNM7kR1hnCJPdXBhFSl";
-
-  // const fetchImages = async (pageNum) => {
-  //   try {
-  //     const response = await fetch(
-  //       `${PEXELS_API}/search?query=${query}&per_page=30&page=${pageNum}`,
-  //       {
-  //         headers: {
-  //           Authorization: PEXELS_API_KEY,
-  //         },
-  //       }
-  //     );
-  //     const data = await response.json();
-
-  //     if (!data.photos || data.photos.length === 0) {
-  //       setHasMore(false);
-  //       return [];
-  //     }
-
-  //     return data.photos.map((photo) => ({
-  //       id: photo.id,
-  //       src: photo.src.large,
-  //       alt: photo.alt || photo.photographer,
-  //       url: photo.src.large,
-  //       width: photo.width,
-  //       height: photo.height,
-  //       aspect: photo.height / photo.width,
-  //     }));
-  //   } catch (error) {
-  //     console.error("Error fetching images:", error);
-  //     return [];
-  //   }
-  // };
+  const loadedImagesRef = useRef(new Set()); // Keep track of loaded image IDs
 
   const fetchImagesApi = async (nextCursor) => {
     try {
@@ -79,21 +44,29 @@ const Gallery = () => {
         setNextCursor(null);
       }
 
-      return data.result.map((photo) => ({
-        id: photo.asset_id,
-        src: photo.url,
-        alt: "",
-        width: photo.width,
-        height: photo.height,
-        aspect: photo.height / photo.width,
-      }));
+      // Filter out any images we've already loaded
+      const newImages = data.result
+        .filter((photo) => !loadedImagesRef.current.has(photo.asset_id))
+        .map((photo) => ({
+          id: photo.asset_id,
+          src: photo.url,
+          alt: "",
+          width: photo.width,
+          height: photo.height,
+          aspect: photo.height / photo.width,
+        }));
+
+      // Add new image IDs to our Set
+      newImages.forEach((img) => loadedImagesRef.current.add(img.id));
+
+      return newImages;
     } catch (error) {
       console.error("Error fetching images:", error);
       return [];
     }
   };
 
-  const distributeImages = (images) => {
+  const distributeImages = useCallback((images) => {
     const columnCount = window.innerWidth >= 1024 ? 3 : 2;
     const newColumns = Array.from({ length: columnCount }, () => []);
     let heights = Array(columnCount).fill(0);
@@ -105,9 +78,8 @@ const Gallery = () => {
     });
 
     setColumns(newColumns);
-  };
+  }, []);
 
-  // Handle intersection observer
   const handleObserver = useCallback(
     (entries) => {
       const target = entries[0];
@@ -140,15 +112,18 @@ const Gallery = () => {
       const newImages = await fetchImagesApi(nextCursor);
 
       if (newImages.length > 0) {
-        setImageData((prev) => [...prev, ...newImages]);
-        distributeImages([...imageData, ...newImages]);
+        setImageData((prev) => {
+          const updatedImages = [...prev, ...newImages];
+          distributeImages(updatedImages);
+          return updatedImages;
+        });
       }
 
       setIsLoading(false);
     };
 
     loadMoreImages();
-  }, [nextCursor]);
+  }, [page, nextCursor, hasMore, distributeImages]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -157,7 +132,18 @@ const Gallery = () => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [imageData]);
+  }, [imageData, distributeImages]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // Reset the loaded images Set when the query changes
+    loadedImagesRef.current.clear();
+    setImageData([]);
+    setColumns([[], [], []]);
+    setPage(1);
+    setNextCursor(undefined);
+    setHasMore(true);
+  }, [query]);
 
   const ImageCard = ({ image }) => {
     return (
@@ -189,19 +175,17 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Gallery Grid */}
       <div className="container mx-auto md:px-4 pt-20 md:pt-32 pb-12 min-h-screen">
         <div className="flex gap-2">
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex-1">
               {column.map((image, index) => (
-                <ImageCard key={index} image={image} />
+                <ImageCard key={`${image.id}-${index}`} image={image} />
               ))}
             </div>
           ))}
         </div>
 
-        {/* Loading Indicator */}
         <div ref={loader} className="flex justify-center py-8">
           {isLoading && (
             <div className="flex items-center space-x-2">
@@ -213,16 +197,11 @@ const Gallery = () => {
               </span>
             </div>
           )}
-          {/* {!hasMore && !isLoading && imageData.length > 0 && (
-            <p className="text-xs text-gray-600">No more images to load</p>
-          )} */}
         </div>
       </div>
 
-      {/* Header */}
       <Header2 setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
 
-      {/* Lightbox */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
