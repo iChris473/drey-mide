@@ -87,8 +87,10 @@ const Home = () => {
       setShowPDF(true);
     } else if (section.id == "conferences") {
       navigate(`/works/conferences`);
+      window.scrollTo(0, 0);
     } else {
       navigate(`/works/${section.id.toLowerCase()}`);
+      window.scrollTo(0, 0);
     }
   };
 
