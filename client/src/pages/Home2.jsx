@@ -38,7 +38,7 @@ const Home2 = () => {
       description:
         "Industrial landscapes and machinery captured in their raw, powerful form.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010906/drey/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_kd6vpq.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736190895/drey/industrial%20energy/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_igibw7.jpg",
     },
     {
       id: "conferences",
@@ -209,7 +209,9 @@ const Home2 = () => {
               {sections.map((section) => (
                 <motion.button
                   key={section.id}
-                  onClick={() => setShowGrid(false)}
+                  onClick={() => {
+                    setShowGrid(false), handleSectionClick(section);
+                  }}
                   className="group relative aspect-square overflow-hidden rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
