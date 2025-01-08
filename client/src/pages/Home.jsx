@@ -129,7 +129,7 @@ const Home = () => {
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
-            className="relative min-h-[50vh] max-h-[55vh] w-full overflow-hidden group cursor-pointer"
+            className="relative h-[50vh]  w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
             onClick={() => handleSectionClick(section)}
