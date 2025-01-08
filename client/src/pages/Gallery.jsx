@@ -149,7 +149,7 @@ const Gallery = () => {
     return (
       <AnimatePresence>
         <motion.div
-          className="relative group cursor-pointer overflow-hidden bg-gray-300 mb-2 md:mb-2"
+          className="relative group cursor-pointer overflow-hidden bg-gray-300 mb-1"
           onClick={() => setSelectedImage(image)}
         >
           <div className="relative">
@@ -176,7 +176,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="container mx-auto md:px-4 pt-20 md:pt-32 pb-12 min-h-screen">
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex-1">
               {column.map((image, index) => (
