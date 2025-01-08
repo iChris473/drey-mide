@@ -18,7 +18,7 @@ const Home = () => {
       id: "professional",
       title: "Professional Experience",
       description:
-        "A showcase of professional projects and experiences across various industries.",
+        "As the official storyteller to the Minister of Mines and Steel Development in Nigeria, I have had the privilege of capturing the essence of our nation's mining sector. Through my lens, I have chronicled pivotal moments, showcasing the industry's growth and challenges while highlighting the Minister's initiatives and achievements.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736167722/drey/professional%20experience/WhatsApp_Image_2025-01-06_at_11.32.45_AM_y0u5nz.jpg",
       pdfUrl: pdf,
@@ -28,7 +28,7 @@ const Home = () => {
       id: "mines",
       title: "Mines",
       description:
-        "A collection of mines photography showcasing the scale and complexity of modern mines operations.",
+        "My photography delves deep into the heart of the mining industry, portraying the raw beauty and intricate processes involved in extracting precious minerals. Each image tells a story of labor, dedication, and the transformative impact of mining on local communities.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736010876/drey/mines/WhatsApp_Image_2024-12-16_at_11.58.34_bs8jqt.jpg",
     },
@@ -36,7 +36,7 @@ const Home = () => {
       id: "industrial energy",
       title: "Industrial Energy",
       description:
-        "Industrial landscapes and machinery captured in their raw, powerful form.",
+        "Focusing on the powerhouse of industrial energy, my work illuminates the machinery, infrastructure, and human effort within the energy sector. My photographs reveal the synergy between technology and manpower, driving the nation's industrial advancements.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736190895/drey/industrial%20energy/segilola/WhatsApp_Image_2024-12-16_at_10.42.24_2_igibw7.jpg",
     },
@@ -44,7 +44,7 @@ const Home = () => {
       id: "conferences",
       title: "Conferences",
       description:
-        "Documenting key industry events and professional gatherings.",
+        "From high-profile corporate conferences to intimate boardroom meetings across the globe, my photography captures the essence of professional gatherings. My images reflect the dynamic interactions, strategic discussions, and influential decisions that shape the corporate landscape.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
     },
@@ -53,7 +53,7 @@ const Home = () => {
       id: "sustainable development",
       title: "Sustainable Development",
       description:
-        "Showcasing projects that balance industrial progress with environmental responsibility.",
+        "My visual storytelling in sustainable development highlights projects and initiatives aimed at balancing economic growth with environmental stewardship. Through my lens, I showcase innovative solutions and the commitment to creating a sustainable future.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736120930/drey/sustainable%20development/WhatsApp_Image_2025-01-04_at_3.29.56_PM_guk5qu.jpg",
     },
@@ -61,7 +61,7 @@ const Home = () => {
       id: "portraits",
       title: "Portraits",
       description:
-        "Capturing the essence and personality of individuals through portrait photography.",
+        "My portrait photography is a celebration of individuality and identity. Each portrait I capture tells a unique story, reflecting the personality, heritage, and aspirations of my subjects, bringing their stories to life with authenticity and depth. \n Notably, the project exhibited in Barcelona, in partnership with the Nigeria Indigenous Women in Mining and Natural Resources Organization (Niwimnro) and MSV Studios, featured compelling stories on artisanal women in mining, shedding light on their integral roles and contributions.These exhibitions and book launches have provided a platform to educate and inspire, showcasing the importance of these resources.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
     },
@@ -69,14 +69,15 @@ const Home = () => {
       id: "exhibition",
       title: "Exhibition / Book Launch",
       description:
-        "Highlights from various exhibitions and book launch events.",
+        "Documenting the first year in office for the Honorable Minister and launching two significant books on Gold and Iron Ore, my work has been pivotal in sharing these milestones.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736194418/drey/exhibition/WhatsApp_Image_2025-01-06_at_9.03.39_PM_3_ba5xmb.jpg",
     },
     {
       id: "youth dev",
       title: "Youth Development",
-      description: "Documenting youth development programs and initiatives.",
+      description:
+        "My dedication to youth development shines through in my impactful initiatives, which have touched the lives of over 250 young individuals in Nigeria. By supplying photography equipment and training, I have enabled the next generation of visual storytellers, nurturing their creativity and honing their skills. My vision is to empower over 100,000 youths across Africa in the next five years.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736191223/drey/youth%20dev/WhatsApp_Image_2025-01-06_at_5.31.23_PM_qvhfpj.jpg",
     },
@@ -128,7 +129,7 @@ const Home = () => {
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
-            className="relative h-[50vh] w-full overflow-hidden group cursor-pointer"
+            className="relative min-h-[50vh] max-h-[55vh] w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
             onClick={() => handleSectionClick(section)}
@@ -145,7 +146,7 @@ const Home = () => {
                 <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                   {section.title}
                 </h2>
-                <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
                   {section.description}
                 </p>
                 <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
