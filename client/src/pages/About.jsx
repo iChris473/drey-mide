@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, Video, Globe, X, Clock, Menu, Grid } from "lucide-react";
+import {
+  Camera,
+  Video,
+  Globe,
+  X,
+  Clock,
+  Menu,
+  Grid,
+  BadgeCheck,
+} from "lucide-react";
 import MobileNav from "../components/MobileNav";
 import { Link } from "react-router-dom";
 
@@ -29,7 +38,7 @@ const AboutPage = () => {
     { icon: Camera, text: "Photography" },
     { icon: Video, text: "Videography" },
     { icon: Clock, text: "Time-lapse" },
-    { icon: X, text: "Licensed Drone Operations" },
+    { icon: BadgeCheck, text: "Licensed Drone Operations" },
     { icon: Globe, text: "360° VR Tours" },
   ];
 

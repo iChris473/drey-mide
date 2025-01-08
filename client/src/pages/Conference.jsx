@@ -15,7 +15,7 @@ const Conferences = () => {
   const sections = [
     {
       id: "aef",
-      title: "AEF",
+      title: "South Africa",
       description:
         "A showcase of AEF conferences and events across various industries.",
       image:
@@ -28,6 +28,13 @@ const Conferences = () => {
         "Explore the African Natural Resources and Energy Investment Summit and their impact on technology and society.",
       image:
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736238682/drey/conferences/AFNIS/_51A5969_cqhkhl.jpg",
+    },
+    {
+      id: "london",
+      title: "London",
+      description: "London conferences and events",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736344240/drey/conferences/london/421899530_18414464176032893_8323718678620726048_n_rqgssj.jpg",
     },
   ];
 

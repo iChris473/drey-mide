@@ -1,5 +1,5 @@
  const navLinks = [
-    { name: "Professional Experience", href: "/works/professional" },
+    // { name: "Professional Experience", href: "/works/professional" },
     { name: "Mines", href: "/works/mines" },
     { name: "Industrial Energy", href: "/works/industrial energy" },
     { name: "Conferences", href: "/works/conferences" },
