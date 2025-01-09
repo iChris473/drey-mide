@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import MobileNav from "../components/MobileNav";
 import pdf from "../assets/pe.pdf";
 import Footer from "../components/Footer";
+import PdfViewer from "../components/home/PdfViewer";
 
 const Home = () => {
   const [showGrid, setShowGrid] = useState(false);
@@ -191,12 +192,15 @@ const Home = () => {
               </button>
             </div>
             <div className="flex-1 p-4">
-              <iframe
+              {/* <iframe
                 src={sections.find((s) => s.id === "professional").pdfUrl}
                 className="w-full h-full rounded-lg"
                 title="Professional Experience PDF"
                 type="application/pdf"
                 scrolling="auto"
+              /> */}
+              <PdfViewer
+                pdfUrl={sections.find((s) => s.id === "professional").pdfUrl}
               />
             </div>
           </motion.div>
