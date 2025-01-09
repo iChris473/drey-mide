@@ -195,6 +195,8 @@ const Home = () => {
                 src={sections.find((s) => s.id === "professional").pdfUrl}
                 className="w-full h-full rounded-lg"
                 title="Professional Experience PDF"
+                type="application/pdf"
+                scrolling="auto"
               />
             </div>
           </motion.div>
