@@ -1,19 +1,12 @@
 import { useState } from "react";
 import { pdfjs } from "react-pdf";
 import { Document, Page } from "react-pdf";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Loader,
-  ZoomIn,
-  ZoomOut,
-} from "lucide-react";
+import { ZoomIn, ZoomOut, Loader } from "lucide-react";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const PdfViewer = ({ pdfUrl }) => {
   const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
   const [scale, setScale] = useState(1.0);
   const [loading, setLoading] = useState(true);
 
@@ -21,18 +14,6 @@ const PdfViewer = ({ pdfUrl }) => {
     setNumPages(numPages);
     setLoading(false);
   }
-
-  const nextPage = () => {
-    if (pageNumber < numPages) {
-      setPageNumber(pageNumber + 1);
-    }
-  };
-
-  const previousPage = () => {
-    if (pageNumber > 1) {
-      setPageNumber(pageNumber - 1);
-    }
-  };
 
   const zoomIn = () => {
     setScale((prevScale) => Math.min(prevScale + 0.2, 2.0));
@@ -43,31 +24,10 @@ const PdfViewer = ({ pdfUrl }) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto bg-white rounded-lg shadow">
+    <div className="flex flex-col items-center w-full h-screen bg-white">
       {/* Controls */}
       <div className="w-full p-4 bg-gray-50 border-b flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={previousPage}
-            disabled={pageNumber <= 1}
-            className="p-2 rounded-lg hover:bg-black/70 disabled:opacity-80 disabled:hover:opacity-70 bg-black"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-
-          <span className="text-sm text-black">
-            Page {pageNumber} of {numPages || "--"}
-          </span>
-
-          <button
-            onClick={nextPage}
-            disabled={pageNumber >= numPages}
-            className="p-2 rounded-lg hover:bg-black/70 disabled:opacity-80 disabled:hover:opacity-70 bg-black"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-
+        <span className="text-sm text-black">Zoom:</span>
         <div className="flex items-center space-x-2">
           <button
             onClick={zoomOut}
@@ -85,7 +45,7 @@ const PdfViewer = ({ pdfUrl }) => {
       </div>
 
       {/* PDF Viewer */}
-      <div className="w-full overflow-auto p-4">
+      <div className="flex-1 w-full overflow-y-auto p-4">
         {loading && (
           <div className="flex justify-center items-center h-64">
             <Loader className="animate-spin" color="black" />
@@ -106,16 +66,19 @@ const PdfViewer = ({ pdfUrl }) => {
             </div>
           }
         >
-          <Page
-            pageNumber={pageNumber}
-            scale={scale}
-            loading={
-              <div className="flex justify-center items-center h-64">
-                <Loader className="animate-spin" color="black" />
-              </div>
-            }
-            className="flex justify-center"
-          />
+          {Array.from(new Array(numPages), (el, index) => (
+            <Page
+              key={`page_${index + 1}`}
+              pageNumber={index + 1}
+              scale={scale}
+              className="flex justify-center mb-4"
+              loading={
+                <div className="flex justify-center items-center h-64">
+                  <Loader className="animate-spin" color="black" />
+                </div>
+              }
+            />
+          ))}
         </Document>
       </div>
     </div>

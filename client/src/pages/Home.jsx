@@ -6,6 +6,7 @@ import MobileNav from "../components/MobileNav";
 import pdf from "../assets/pe.pdf";
 import Footer from "../components/Footer";
 import PdfViewer from "../components/home/PdfViewer";
+import CompaniesSlider from "../components/home/CompanySlider";
 
 const Home = () => {
   const [showGrid, setShowGrid] = useState(false);
@@ -14,7 +15,22 @@ const Home = () => {
   const [showPDF, setShowPDF] = useState(false);
   const navigate = useNavigate();
 
+  const backgrounds = [
+    "/photos/1.jpeg",
+    "/photos/2.jpeg",
+    "/photos/3.jpeg",
+    "/photos/4.jpeg",
+  ];
+
   const sections = [
+    {
+      id: "about",
+      title: "Profile",
+      description:
+        "As the official storyteller to the Minister of Mines and Steel Development in Nigeria, I have had the privilege of capturing the essence of our nation's mining sector. Through my lens, I have chronicled pivotal moments, showcasing the industry's growth and challenges while highlighting the Minister's initiatives and achievements.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736167722/drey/professional%20experience/WhatsApp_Image_2025-01-06_at_11.32.45_AM_y0u5nz.jpg",
+    },
     {
       id: "professional",
       title: "Professional Experience",
@@ -126,51 +142,107 @@ const Home = () => {
       </div>
 
       {/* Main Stacked Sections */}
-      <div className="pt-0">
-        {sections.map((section, index) => (
-          <motion.div
-            key={section.id}
-            className="relative h-[50vh]  w-full overflow-hidden group cursor-pointer"
-            onHoverStart={() => setHoveredSection(index)}
-            onHoverEnd={() => setHoveredSection(null)}
-            onClick={() => handleSectionClick(section)}
-          >
-            <img
-              src={section.image}
-              alt={section.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" />
-
-            <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
-              <div className="max-w-4xl">
-                <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
-                  {section.title}
-                </h2>
-                <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  {section.description}
-                </p>
-                <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                  <span className="text-sm uppercase tracking-wider">
-                    {section.type === "pdf" ? "View" : "View Gallery"}
-                  </span>
-                  {section.type === "pdf" ? (
-                    <FileText />
-                  ) : (
-                    <ArrowRight className="transition-transform group-hover:translate-x-2" />
-                  )}
-                </motion.button>
+      <div>
+        {sections.map((section, index) =>
+          index == 0 ? (
+            <motion.div
+              key={index}
+              className="relative h-[50vh] w-full overflow-hidden group cursor-pointer"
+              onHoverStart={() => setHoveredSection(index)}
+              onHoverEnd={() => setHoveredSection(null)}
+            >
+              {/* Grid Background */}
+              <div className="absolute inset-0 grid grid-cols-4 grid-rows-1">
+                {backgrounds.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative w-full h-full overflow-hidden"
+                  >
+                    <img
+                      src={image}
+                      alt={`Background ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
               </div>
-            </div>
 
-            {/* Section Number */}
-            <div className="absolute top-8 left-8 opacity-25">
-              <span className="text-6xl font-light">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            </div>
-          </motion.div>
-        ))}
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" />
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
+                <div className="max-w-4xl">
+                  <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 text-white">
+                    Oluwadamilare Ayomide
+                  </h2>
+                  <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    Oluwadamilare Ayomide, widely known as Drey Mide, is a
+                    renowned Visual Storyteller and Conceptual Artist from Osun
+                    State, Nigeria. With a keen eye for detail and a passion
+                    for....
+                  </p>
+                  <Link to="/about">
+                    <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200 text-white">
+                      <span className="text-sm uppercase tracking-wider">
+                        Profile
+                      </span>
+                      <ArrowRight className="transition-transform group-hover:translate-x-2" />
+                    </motion.button>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="absolute top-8 left-8 opacity-25 text-white">
+                <span className="text-6xl font-light"></span>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={section.id}
+              className="relative h-[50vh]  w-full overflow-hidden group cursor-pointer"
+              onHoverStart={() => setHoveredSection(index)}
+              onHoverEnd={() => setHoveredSection(null)}
+              onClick={() => handleSectionClick(section)}
+            >
+              <img
+                src={section.image}
+                alt={section.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500" />
+
+              <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
+                <div className="max-w-4xl">
+                  <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                    {section.title}
+                  </h2>
+                  <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {section.description}
+                  </p>
+                  <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    <span className="text-sm uppercase tracking-wider">
+                      {section.type === "pdf" ? "View" : "View Gallery"}
+                    </span>
+                    {section.type === "pdf" ? (
+                      <FileText />
+                    ) : (
+                      <ArrowRight className="transition-transform group-hover:translate-x-2" />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Section Number */}
+              <div className="absolute top-8 left-8 opacity-25">
+                <span className="text-6xl font-light">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+            </motion.div>
+          )
+        )}
+        <CompaniesSlider />
       </div>
 
       {/* PDF Viewer Modal */}

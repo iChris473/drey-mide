@@ -5,10 +5,13 @@ import {
   Video,
   Globe,
   X,
-  Clock,
   Menu,
   Grid,
   BadgeCheck,
+  BookOpen,
+  Users,
+  Award,
+  Building,
 } from "lucide-react";
 import MobileNav from "../components/MobileNav";
 import { Link } from "react-router-dom";
@@ -34,17 +37,19 @@ const AboutPage = () => {
     }
   }, [isHovering]);
 
-  const techniques = [
-    { icon: Camera, text: "Photography" },
-    { icon: Video, text: "Videography" },
-    { icon: Clock, text: "Time-lapse" },
-    { icon: BadgeCheck, text: "Licensed Drone Operations" },
-    { icon: Globe, text: "360° VR Tours" },
+  const expertise = [
+    { icon: Camera, text: "Visual Storytelling" },
+    { icon: Video, text: "Corporate Documentation" },
+    { icon: Globe, text: "Global Exhibition Experience" },
+    { icon: BookOpen, text: "Publications & Research" },
+    { icon: Users, text: "Youth Empowerment" },
+    { icon: Award, text: "Canon Workshop Alumni" },
+    { icon: Building, text: "Industrial Photography" },
+    { icon: BadgeCheck, text: "Ministry Documentation" },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Background Images */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentBgIndex}
@@ -80,7 +85,7 @@ const AboutPage = () => {
         </button>
       </div>
 
-      <div className="fixed top-8 left-3 md:left-8 z-50 hidden md:flex flex-col  items-center">
+      <div className="fixed top-8 left-3 md:left-8 z-50 hidden md:flex flex-col items-center">
         <Link to="/">
           <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
             <span className="font-medium">DREY</span>
@@ -91,19 +96,17 @@ const AboutPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Hero Section */}
         <div className="min-h-screen flex items-center pt-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              {/* Left Column - Main Introduction */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 className="space-y-8"
               >
-                <h1 className=" text-6xl font-light tracking-tight">
-                  Drey Mide
+                <h1 className="text-6xl font-light tracking-tight">
+                  Oluwadamilare Ayomide
                 </h1>
                 <p className="text-lg md:text-2xl text-gray-300 font-light">
                   Visual Storyteller & Conceptual Artist
@@ -115,19 +118,21 @@ const AboutPage = () => {
                   className="w-24 h-0.5 bg-white"
                 />
                 <p className="text-xs md:text-lg text-gray-300 leading-relaxed">
-                  A Visual Storyteller and Conceptual Artist from Nigeria,
-                  passionately exploring human stories that highlight our
-                  heritage and the circumstantial economy, raising awareness
-                  about social issues in Africa and its myriad perspectives.
+                  Born in Ibadan, Nigeria, 30 years ago, Drey Mide's journey
+                  from modest beginnings to becoming a renowned visual
+                  storyteller exemplifies resilience and creativity. With roots
+                  in Osun State and a deep passion for God and humanity, he has
+                  transformed his art into a powerful medium for education,
+                  advocacy, and social change.
                 </p>
                 <p className="text-xs md:text-lg text-gray-300 leading-relaxed">
-                  For him, photography transcends mere art; it is a potent
-                  medium for storytelling, education, and envisioning a better
-                  society.
+                  Through collaborations with Canon and various educational
+                  workshops, Drey has refined his expertise in visual narration,
+                  using his lens to capture compelling stories that transcend
+                  borders and inspire change.
                 </p>
               </motion.div>
 
-              {/* Right Column - Current Work & Expertise */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -136,43 +141,40 @@ const AboutPage = () => {
               >
                 <div className="backdrop-blur-sm bg-black/20 p-8 rounded-lg border border-white/10 text-xs md:text-base">
                   <h2 className="text-lg md:text-xl font-light mb-4">
-                    Current Focus
+                    Notable Achievements
                   </h2>
-                  <p className=" text-gray-300 leading-relaxed mb-6">
-                    Presently, his major works and interests revolve around
-                    mining across Africa. He has curated two publications on
-                    gold and iron ore, respectively, and showcased his work in
-                    Barcelona, Spain, in 2024.
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    From his acclaimed exhibition in Abuja (2020) to Barcelona
+                    (2024), Drey's work has gained international recognition.
+                    His project "Resilience on the Rocks" with NIWIMNRO and MSV
+                    Studios highlighted untold stories of women in mining, while
+                    his role as official storyteller for Nigeria's Ministry of
+                    Mines and Steel Development has documented crucial progress
+                    in the sector.
                   </p>
                   <p className="text-gray-300 leading-relaxed">
-                    Additionally, he has been a significant contributor to the
-                    Geological Society of Nigeria&apos;s publication for two
-                    consecutive years.
+                    Through his youth empowerment initiatives, Drey has impacted
+                    over 250 young Nigerians, providing photography equipment
+                    and training. His vision extends to empowering 100,000 young
+                    people across Africa in the next five years.
                   </p>
                 </div>
 
                 <div className="backdrop-blur-sm bg-black/20 p-8 rounded-lg border border-white/10 text-xs md:text-base">
                   <h2 className="text-lg md:text-xl font-light mb-4">
-                    Content Creation
+                    Areas of Expertise
                   </h2>
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    A confident, approachable, and enthusiastic content creator,
-                    eager to help businesses of all sizes communicate their
-                    greatness.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {techniques.map((technique, index) => (
+                  <div className="grid grid-cols-2 gap-6">
+                    {expertise.map((item, index) => (
                       <motion.div
-                        key={technique.text}
+                        key={item.text}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 + 0.5 }}
                         className="flex items-center space-x-3 text-gray-300"
                       >
-                        <technique.icon className="h-5 w-5" />
-                        <span className="text-xs md:text-sm">
-                          {technique.text}
-                        </span>
+                        <item.icon className="h-5 w-5" />
+                        <span className="text-xs md:text-sm">{item.text}</span>
                       </motion.div>
                     ))}
                   </div>
