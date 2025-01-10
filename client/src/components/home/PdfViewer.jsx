@@ -14,13 +14,11 @@ const PDFViewer = ({
       script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
       script.async = true;
       script.onload = initAdobeDCView;
-      console.log("loading adobe dc");
 
       document.head.appendChild(script);
     };
 
     const initAdobeDCView = () => {
-      console.log("loading adobe dc");
       if (window.AdobeDC) {
         const adobeDCView = new window.AdobeDC.View({
           clientId: clientId,

@@ -109,7 +109,7 @@ const CompaniesSlider = () => {
           {doubledCompanies.map((company, index) => (
             <motion.div
               key={index}
-              className="relative flex-shrink-0 w-64 bg-black backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-white/20 transition-colors"
+              className="relative flex-shrink-0 w-40 md:w-64 bg-black backdrop-blur-sm rounded-lg p-2 md:p-6 border border-white/10 hover:border-white/20 transition-colors"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.2 }}
             >
