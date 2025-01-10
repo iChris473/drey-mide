@@ -1,88 +1,60 @@
-import { useState } from "react";
-import { pdfjs } from "react-pdf";
-import { Document, Page } from "react-pdf";
-import { ZoomIn, ZoomOut, Loader } from "lucide-react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+const PDFViewer = ({
+  pdfUrl,
+  clientId = "f5baf96cd6c1470ca8704ace9558a2a2",
+}) => {
+  useEffect(() => {
+    // Load Adobe DC View SDK
+    const loadAdobeDC = () => {
+      if (document.querySelector('script[src*="acrobat-dc-view"]')) return;
 
-const PdfViewer = ({ pdfUrl }) => {
-  const [numPages, setNumPages] = useState(null);
-  const [scale, setScale] = useState(1.0);
-  const [loading, setLoading] = useState(true);
+      const script = document.createElement("script");
+      script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
+      script.async = true;
+      script.onload = initAdobeDCView;
+      console.log("loading adobe dc");
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setLoading(false);
-  }
+      document.head.appendChild(script);
+    };
 
-  const zoomIn = () => {
-    setScale((prevScale) => Math.min(prevScale + 0.2, 2.0));
-  };
+    const initAdobeDCView = () => {
+      console.log("loading adobe dc");
+      if (window.AdobeDC) {
+        const adobeDCView = new window.AdobeDC.View({
+          clientId: clientId,
+          divId: "adobe-dc-view",
+        });
 
-  const zoomOut = () => {
-    setScale((prevScale) => Math.max(prevScale - 0.2, 0.5));
-  };
+        adobeDCView.previewFile({
+          content: { location: { url: pdfUrl } },
+          metaData: { fileName: "Document.pdf" },
+        });
+      }
+    };
+
+    loadAdobeDC();
+
+    return () => {
+      const script = document.querySelector('script[src*="acrobat-dc-view"]');
+      if (script) {
+        script.remove();
+      }
+    };
+  }, [pdfUrl, clientId]);
 
   return (
-    <div className="flex flex-col items-center w-full h-screen bg-white">
-      {/* Controls */}
-      <div className="w-full p-4 bg-gray-50 border-b flex items-center justify-between">
-        <span className="text-sm text-black">Zoom:</span>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={zoomOut}
-            className="p-2 rounded-lg hover:bg-gray-200"
-          >
-            <ZoomOut className="h-5 w-5" />
-          </button>
-          <span className="text-sm w-16 text-center">
-            {Math.round(scale * 100)}%
-          </span>
-          <button onClick={zoomIn} className="p-2 rounded-lg hover:bg-gray-200">
-            <ZoomIn className="h-5 w-5" />
-          </button>
-        </div>
-      </div>
-
-      {/* PDF Viewer */}
-      <div className="flex-1 w-full overflow-y-auto p-4">
-        {loading && (
-          <div className="flex justify-center items-center h-64">
-            <Loader className="animate-spin" color="black" />
-          </div>
-        )}
-
-        <Document
-          file={pdfUrl}
-          onLoadSuccess={onDocumentLoadSuccess}
-          loading={
-            <div className="flex justify-center items-center h-64">
-              <Loader className="animate-spin" color="black" />
-            </div>
-          }
-          error={
-            <div className="text-center text-red-500 p-4">
-              Failed to load PDF. Please try again later.
-            </div>
-          }
-        >
-          {Array.from(new Array(numPages), (el, index) => (
-            <Page
-              key={`page_${index + 1}`}
-              pageNumber={index + 1}
-              scale={scale}
-              className="flex justify-center mb-4"
-              loading={
-                <div className="flex justify-center items-center h-64">
-                  <Loader className="animate-spin" color="black" />
-                </div>
-              }
-            />
-          ))}
-        </Document>
+    <div className="w-full">
+      <div>
+        <div id="adobe-dc-view" className="w-full" style={{ height: "90vh" }} />
       </div>
     </div>
   );
 };
+PDFViewer.propTypes = {
+  pdfUrl: PropTypes.string.isRequired,
+  clientId: PropTypes.string,
+};
 
-export default PdfViewer;
+export default PDFViewer;
