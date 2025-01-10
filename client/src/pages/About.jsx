@@ -105,7 +105,7 @@ const AboutPage = () => {
                 transition={{ duration: 0.8 }}
                 className="space-y-8"
               >
-                <h1 className="text-6xl font-light tracking-tight">
+                <h1 className="text-4xl md:text-6xl font-light tracking-tight">
                   Oluwadamilare Ayomide
                 </h1>
                 <p className="text-lg md:text-2xl text-gray-300 font-light">
@@ -117,19 +117,38 @@ const AboutPage = () => {
                   transition={{ duration: 1, delay: 0.5 }}
                   className="w-24 h-0.5 bg-white"
                 />
-                <p className="text-xs md:text-lg text-gray-300 leading-relaxed">
-                  Born in Ibadan, Nigeria, 30 years ago, Drey Mide's journey
-                  from modest beginnings to becoming a renowned visual
-                  storyteller exemplifies resilience and creativity. With roots
-                  in Osun State and a deep passion for God and humanity, he has
-                  transformed his art into a powerful medium for education,
-                  advocacy, and social change.
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                  Oluwadamilare Ayomide, widely known as Drey Mide, is a
+                  renowned Visual Storyteller and Conceptual Artist from Osun
+                  State, Nigeria. Born into a family of three, 30 years ago with
+                  modest beginnings in Ibadan, Nigeria. Drey Mide's journey from
+                  a windowless room to the global stage is a testament to
+                  resilience, creativity, and faith. He has used his art as a
+                  powerful tool to educate, inspire, and shape narratives.
                 </p>
-                <p className="text-xs md:text-lg text-gray-300 leading-relaxed">
-                  Through collaborations with Canon and various educational
-                  workshops, Drey has refined his expertise in visual narration,
-                  using his lens to capture compelling stories that transcend
-                  borders and inspire change.
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                  For Drey, photography transcends art—it's a tool for
+                  education, advocacy, and transformation. Driven by a deep
+                  passion for God and humanity, he believes in the power of
+                  visuals to envision a better society. His skills have been
+                  further refined in visual narration during educational
+                  workshops, including collaborations with Canon, where he honed
+                  his expertise in storytelling through the lens.
+                </p>
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                  With close to a decade of professional experience in the art
+                  of storytelling, Drey has focused much of his work on
+                  documenting the corporate and industrial landscapes across
+                  Africa. In 2020, Drey Mide's artistry took center stage in
+                  Abuja, Nigeria, exhibiting the Ministers journey captivating
+                  audiences with his unique perspective on resilience. By 2024,
+                  his work crossed continents, with an acclaimed exhibition in
+                  Barcelona, Spain. One of his standout projects, Resilience on
+                  the Rocks, in partnership with the Nigeria Indigenous Women in
+                  Mining and Natural Resources Organization (NIWIMNRO) and MSV
+                  Studios, highlighted the untold stories of artisanal women in
+                  mining, showcasing their pivotal contributions to the
+                  industry.
                 </p>
               </motion.div>
 
@@ -143,20 +162,47 @@ const AboutPage = () => {
                   <h2 className="text-lg md:text-xl font-light mb-4">
                     Notable Achievements
                   </h2>
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    From his acclaimed exhibition in Abuja (2020) to Barcelona
-                    (2024), Drey's work has gained international recognition.
-                    His project "Resilience on the Rocks" with NIWIMNRO and MSV
-                    Studios highlighted untold stories of women in mining, while
-                    his role as official storyteller for Nigeria's Ministry of
-                    Mines and Steel Development has documented crucial progress
-                    in the sector.
+                  <p className="text-gray-300 leading-relaxed mb-6 text-xs md:text-sm">
+                    Drey's publications on Africa's mineral wealth including
+                    gold and iron ore, alongside his role as the official
+                    storyteller for Nigeria’s Ministry of Mines and Steel
+                    Development highlight the challenges and progress in
+                    Nigeria's mining sector while capturing the Minister’s
+                    efforts and achievements.
                   </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    Through his youth empowerment initiatives, Drey has impacted
-                    over 250 young Nigerians, providing photography equipment
-                    and training. His vision extends to empowering 100,000 young
-                    people across Africa in the next five years.
+                  <p className="text-gray-300 leading-relaxed mb-6 text-sm md:text-sm">
+                    His professional journey has taken him to major global
+                    corporate conferences across Europe, Asia, and Africa, where
+                    he has participated as both a delegate and an exhibitor.
+                    Through these experiences, Drey has remained committed to
+                    making a meaningful impact within the mining and industrial
+                    sectors through visual storytelling.
+                  </p>
+                  <p className="text-gray-300 leading-relaxed mb-6 text-sm md:text-sm">
+                    Beyond his artistic achievements, Drey is deeply passionate
+                    about capacity-building and youth empowerment. His
+                    dedication to nurturing the next generation of visual
+                    storytellers has led him to facilitate impactful initiatives
+                    that have touched the lives of over 250 young Nigerians.
+                    Through these initiatives, he has provided photography
+                    equipment and training, helping to cultivate creativity and
+                    professional skills among youth. Drey's vision is to empower
+                    over 100,000 young people across Africa over the next five
+                    years, equipping them to become the storytellers of
+                    tomorrow.
+                  </p>
+
+                  <p className="text-gray-300 leading-relaxed mb-6 text-sm md:text-sm">
+                    Through his lens, Drey Mide has illuminated hidden
+                    narratives that inspire change and transformation in
+                    communities and industries alike. His unwavering commitment
+                    to storytelling, youth empowerment, and social advocacy
+                    reflects a deep passion for leaving a lasting legacy. As he
+                    looks to the future, Drey envisions a continent where young
+                    Africans are empowered to share their unique narratives,
+                    fostering creativity, resilience, and hope. With every
+                    frame, he continues to shape impactful stories that
+                    transcend borders and inspire a better tomorrow.
                   </p>
                 </div>
 
