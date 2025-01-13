@@ -92,7 +92,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
                 },
                 {
                   icon: Linkedin,
-                  href: "https://linkedin/in/dreymide",
+                  href: "https://linkedin.com/in/dreymide",
                   label: "LinkedIn",
                 },
               ].map(({ icon: Icon, href, label }, index) => (
