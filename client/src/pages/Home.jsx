@@ -153,6 +153,7 @@ const Home = () => {
               className="relative h-[30vh] w-full overflow-hidden group cursor-pointer"
               onHoverStart={() => setHoveredSection(index)}
               onHoverEnd={() => setHoveredSection(null)}
+              onContextMenu={(e) => e.preventDefault()}
             >
               {/* Grid Background */}
               <div className="absolute inset-0 grid grid-cols-4 grid-rows-1">
@@ -210,6 +211,7 @@ const Home = () => {
               onHoverStart={() => setHoveredSection(index)}
               onHoverEnd={() => setHoveredSection(null)}
               onClick={() => handleSectionClick(section)}
+              onContextMenu={(e) => e.preventDefault()}
             >
               <img
                 src={section.image}

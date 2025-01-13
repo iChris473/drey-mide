@@ -151,13 +151,16 @@ const Gallery = () => {
         <motion.div
           className="relative group cursor-pointer overflow-hidden bg-gray-300 mb-1"
           onClick={() => setSelectedImage(image)}
+          onContextMenu={(e) => e.preventDefault()}
         >
           <div className="relative">
             <img
               src={image.src}
               alt={image.alt}
               className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
+              loading="eager"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
               style={{
                 aspectRatio: `${image.width} / ${image.height}`,
               }}
@@ -212,6 +215,8 @@ const Gallery = () => {
               src={selectedImage.src}
               alt={selectedImage.alt}
               className="w-full h-full object-contain"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
           <button

@@ -49,7 +49,10 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div
+      className="min-h-screen bg-black text-white relative overflow-hidden"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={currentBgIndex}
@@ -58,6 +61,7 @@ const AboutPage = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
           className="absolute inset-0 z-0"
+          onContextMenu={(e) => e.preventDefault()}
         >
           <div className="absolute inset-0 bg-black/70 z-10" />
           <img
