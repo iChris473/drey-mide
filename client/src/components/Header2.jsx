@@ -7,6 +7,7 @@ import {
   Mail,
   ChevronDown,
   ChevronUp,
+  Linkedin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -126,11 +127,19 @@ const Header2 = ({ setIsMenuOpen, isMenuOpen }) => {
             {[
               {
                 icon: Instagram,
-                href: "https://instagram.com",
+                href: "https://instagram.com/dreymide",
                 label: "Instagram",
               },
-              { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-              { icon: Mail, href: "mailto:hello@drey.com", label: "Email" },
+              {
+                icon: Twitter,
+                href: "https://twitter.com/dreymide",
+                label: "Twitter",
+              },
+              {
+                icon: Linkedin,
+                href: "https://linkedin/in/dreymide",
+                label: "LinkedIn",
+              },
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}

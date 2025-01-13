@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Instagram, Twitter, Mail } from "lucide-react";
+import { X, Instagram, Twitter, Mail, Linkedin } from "lucide-react";
 import navLinks from "../../utils/navlinks";
 
 function MobileNav({ isMenuOpen, setIsMenuOpen }) {
@@ -82,15 +82,19 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
               {[
                 {
                   icon: Instagram,
-                  href: "https://instagram.com",
+                  href: "https://instagram.com/dreymide",
                   label: "Instagram",
                 },
                 {
                   icon: Twitter,
-                  href: "https://twitter.com",
+                  href: "https://twitter.com/dreymide",
                   label: "Twitter",
                 },
-                { icon: Mail, href: "mailto:hello@drey.com", label: "Email" },
+                {
+                  icon: Linkedin,
+                  href: "https://linkedin/in/dreymide",
+                  label: "LinkedIn",
+                },
               ].map(({ icon: Icon, href, label }, index) => (
                 <motion.a
                   key={index}

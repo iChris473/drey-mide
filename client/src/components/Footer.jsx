@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Instagram, Twitter } from "lucide-react";
+import { Mail, Instagram, Twitter, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,13 +23,13 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex space-x-6">
             <a
-              href="mailto:your.email@example.com"
+              href="https://linkedin.com/in/dreymide"
               className="hover:text-black transition-colors p-2"
             >
-              <Mail size={14} />
+              <Linkedin size={14} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/dreymide"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-colors p-2"
@@ -37,7 +37,7 @@ const Footer = () => {
               <Instagram size={14} />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://twitter.com/dreymide"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-colors p-2"

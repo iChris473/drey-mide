@@ -33,8 +33,7 @@ const Conferences = () => {
       id: "london",
       title: "London",
       description: "London conferences and events",
-      image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736344240/drey/conferences/london/421899530_18414464176032893_8323718678620726048_n_rqgssj.jpg",
+      image: "",
     },
   ];
 
@@ -45,7 +44,7 @@ const Conferences = () => {
   return (
     <div className="min-h-screen bg-white text-white">
       {/* Logo */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+      <div className="fixed top-8 left-6 z-50 flex flex-col items-center">
         <Link to="/">
           <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
             <span className="font-medium">DREY</span>
@@ -76,7 +75,7 @@ const Conferences = () => {
         {sections.map((section, index) => (
           <motion.div
             key={section.id}
-            className="relative h-[50vh] w-full overflow-hidden group cursor-pointer"
+            className="relative h-[30vh] w-full overflow-hidden group cursor-pointer"
             onHoverStart={() => setHoveredSection(index)}
             onHoverEnd={() => setHoveredSection(null)}
             onClick={() => handleSectionClick(section)}
@@ -93,17 +92,20 @@ const Conferences = () => {
                 <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                   {section.title}
                 </h2>
-                <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <p className="text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-100 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                   {section.description}
                 </p>
                 <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                  <span className="text-sm uppercase tracking-wider">
+                  <span className="text-xs uppercase tracking-wider">
                     {section.type === "pdf" ? "View" : "View Gallery"}
                   </span>
                   {section.type === "pdf" ? (
                     <FileText />
                   ) : (
-                    <ArrowRight className="transition-transform group-hover:translate-x-2" />
+                    <ArrowRight
+                      className="transition-transform group-hover:translate-x-2"
+                      size={16}
+                    />
                   )}
                 </motion.button>
               </div>

@@ -43,7 +43,7 @@ const Home = () => {
     },
     {
       id: "mines",
-      title: "Mines",
+      title: "Mining",
       description:
         "My photography delves deep into the heart of the mining industry, portraying the raw beauty and intricate processes involved in extracting precious minerals. Each image tells a story of labor, dedication, and the transformative impact of mining on local communities.",
       image:
@@ -115,7 +115,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white text-white">
       {/* Logo */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+      <div className="fixed top-8 left-6 z-50 flex flex-col items-center">
         <Link to="/">
           <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
             <span className="font-medium">DREY</span>
@@ -147,7 +147,7 @@ const Home = () => {
           index == 0 ? (
             <motion.div
               key={index}
-              className="relative h-[54vh] w-full overflow-hidden group cursor-pointer"
+              className="relative h-[30vh] w-full overflow-hidden group cursor-pointer"
               onHoverStart={() => setHoveredSection(index)}
               onHoverEnd={() => setHoveredSection(null)}
             >
@@ -176,7 +176,7 @@ const Home = () => {
                   <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 text-white">
                     Oluwadamilare Ayomide
                   </h2>
-                  <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     Oluwadamilare Ayomide, widely known as Drey Mide, is a
                     renowned Visual Storyteller and Conceptual Artist from Osun
                     State, Nigeria. With a keen eye for detail and a passion
@@ -184,10 +184,13 @@ const Home = () => {
                   </p>
                   <Link to="/about">
                     <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200 text-white">
-                      <span className="text-sm uppercase tracking-wider">
+                      <span className="text-xs uppercase tracking-wider">
                         Profile
                       </span>
-                      <ArrowRight className="transition-transform group-hover:translate-x-2" />
+                      <ArrowRight
+                        className="transition-transform group-hover:translate-x-2"
+                        size={16}
+                      />
                     </motion.button>
                   </Link>
                 </div>
@@ -200,7 +203,7 @@ const Home = () => {
           ) : (
             <motion.div
               key={section.id}
-              className="relative h-[54vh]  w-full overflow-hidden group cursor-pointer"
+              className="relative h-[30vh]  w-full overflow-hidden group cursor-pointer"
               onHoverStart={() => setHoveredSection(index)}
               onHoverEnd={() => setHoveredSection(null)}
               onClick={() => handleSectionClick(section)}
@@ -217,15 +220,15 @@ const Home = () => {
                   <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                     {section.title}
                   </h2>
-                  <p className="text-sm mx-auto md:text-lg text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {section.description}
                   </p>
                   <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    <span className="text-sm uppercase tracking-wider">
+                    <span className="text-xs uppercase tracking-wider">
                       {section.type === "pdf" ? "View" : "View Gallery"}
                     </span>
                     {section.type === "pdf" ? (
-                      <FileText />
+                      <FileText size={16} />
                     ) : (
                       <ArrowRight className="transition-transform group-hover:translate-x-2" />
                     )}
@@ -255,7 +258,7 @@ const Home = () => {
             className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col"
           >
             <div className="flex justify-between items-center p-4 bg-black/50">
-              <h3 className="text-sm md:text-xl">Professional Experience</h3>
+              <h3 className="text-xs md:text-sm">Professional Experience</h3>
               <button
                 onClick={() => setShowPDF(false)}
                 className="p-2 hover:bg-white/10 rounded-full transition-colors"
@@ -264,13 +267,6 @@ const Home = () => {
               </button>
             </div>
             <div className="flex-1 p-4">
-              {/* <iframe
-                src={sections.find((s) => s.id === "professional").pdfUrl}
-                className="w-full h-full rounded-lg"
-                title="Professional Experience PDF"
-                type="application/pdf"
-                scrolling="auto"
-              /> */}
               <PdfViewer
                 pdfUrl={sections.find((s) => s.id === "professional").pdfUrl}
               />
