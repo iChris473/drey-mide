@@ -15,7 +15,7 @@ router.get('/get-images', (req, res, next) => {
     return;
   }
   const { search, per_page, next_cursor } = req.query;
-  const dir = search == "aef" || search == "afnis" || search == "london" ? "drey/conferences" : "drey";
+  const dir = search == "aef" || search == "afnis" || search == "london" || search == "saudi" ? "drey/conferences" : "drey";
 
   const searchOptions = {
     type: 'upload',

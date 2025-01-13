@@ -63,7 +63,7 @@ const Home = () => {
       description:
         "From high-profile corporate conferences to intimate boardroom meetings across the globe, my photography captures the essence of professional gatherings. My images reflect the dynamic interactions, strategic discussions, and influential decisions that shape the corporate landscape.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736012006/drey/conferences/AEF/more/WhatsApp_Image_2025-01-04_at_3.00.51_PM_1_rziaqs.jpg",
     },
 
     {
@@ -115,31 +115,34 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white text-white">
       {/* Logo */}
-      <div className="fixed top-8 left-6 z-50 flex flex-col items-center">
-        <Link to="/">
-          <h1 className="text-base md:text-2xl font-light tracking-[0.2em]">
-            <span className="font-medium">DREY</span>
-            <span className="opacity-70">.MIDE</span>
-          </h1>
-        </Link>
-        <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
+      <div className="fixed top-8 z-50 flex items-center justify-between  w-full px-6">
+        <div className="flex flex-col items-center">
+          <Link to="/">
+            <h1 className="text-sm md:text-2xl font-light tracking-[0.2em]">
+              <span className="font-medium">DREY</span>
+              <span className="opacity-70">.MIDE</span>
+            </h1>
+          </Link>
+          <div className="h-[1px] w-12 bg-white/30 mt-2 transform transition-all duration-300 hover:w-24 hover:bg-white/50" />
+        </div>
+
+        <div className="flex gap-4">
+          <button
+            onClick={() => setShowGrid(!showGrid)}
+            className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
+          >
+            <Grid size={20} />
+          </button>
+          <button
+            className="p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Fixed Navigation */}
-      <div className="fixed top-8 right-3 md:right-8 z-50 flex gap-4">
-        <button
-          onClick={() => setShowGrid(!showGrid)}
-          className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
-        >
-          <Grid size={20} />
-        </button>
-        <button
-          className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
 
       {/* Main Stacked Sections */}
       <div>
@@ -173,10 +176,10 @@ const Home = () => {
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
                 <div className="max-w-4xl">
-                  <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 text-white">
+                  <h2 className="text-3xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 text-white">
                     Oluwadamilare Ayomide
                   </h2>
-                  <p className="text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-[0.68rem] md:text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     Oluwadamilare Ayomide, widely known as Drey Mide, is a
                     renowned Visual Storyteller and Conceptual Artist from Osun
                     State, Nigeria. With a keen eye for detail and a passion
@@ -217,14 +220,14 @@ const Home = () => {
 
               <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 items-center text-center">
                 <div className="max-w-4xl">
-                  <h2 className="text-4xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
+                  <h2 className="text-3xl md:text-6xl font-extralight mb-6 transform transition-all duration-500 group-hover:translate-x-0">
                     {section.title}
                   </h2>
-                  <p className="text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-[0.68rem] md:text-xs mx-auto text-white/80 max-w-xl mb-8 opacity-0 h-0 overflow-hidden group-hover:h-fit group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {section.description}
                   </p>
                   <motion.button className="flex items-center justify-center gap-2 opacity-0 w-full group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    <span className="text-xs uppercase tracking-wider">
+                    <span className="text-[0.68rem] md:text-xs uppercase tracking-wider">
                       {section.type === "pdf" ? "View" : "View Gallery"}
                     </span>
                     {section.type === "pdf" ? (

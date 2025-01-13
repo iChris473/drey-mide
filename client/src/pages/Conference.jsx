@@ -30,10 +30,18 @@ const Conferences = () => {
         "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736238682/drey/conferences/AFNIS/_51A5969_cqhkhl.jpg",
     },
     {
+      id: "saudi",
+      title: "Saudi Arabia",
+      description: "Conferences and events in Saudi Arabia.",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736775224/drey/conferences/saudi/SaveClip.App_421899530_18414464176032893_8323718678620726048_n_ym5yl7.jpg",
+    },
+    {
       id: "london",
       title: "London",
       description: "London conferences and events",
-      image: "",
+      image:
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736775449/drey/conferences/london/SaveClip.App_410980284_18406627216032893_4211004824110223497_n_rasl6l.jpg",
     },
   ];
 

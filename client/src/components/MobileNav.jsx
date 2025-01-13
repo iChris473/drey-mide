@@ -59,7 +59,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className="text-2xl md:text-3xl font-light tracking-wider">
+                    <span className="text-base md:text-3xl font-light tracking-wider">
                       {item.name}
                     </span>
                     <motion.div
@@ -105,7 +105,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }) {
                   whileHover={{ y: -2 }}
                 >
                   <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full group-hover:bg-white/20 transition-all">
-                    <Icon size={20} />
+                    <Icon size={16} />
                   </div>
                   <span className="text-xs uppercase tracking-wider opacity-50 group-hover:opacity-100 transition-opacity">
                     {label}
