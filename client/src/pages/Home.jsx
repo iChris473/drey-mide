@@ -59,7 +59,7 @@ const Home = () => {
     },
     {
       id: "conferences",
-      title: "Conferences",
+      title: "Cooperate Conferences",
       description:
         "From high-profile corporate conferences to intimate boardroom meetings across the globe, my photography captures the essence of professional gatherings. My images reflect the dynamic interactions, strategic discussions, and influential decisions that shape the corporate landscape.",
       image:
@@ -68,7 +68,7 @@ const Home = () => {
 
     {
       id: "sustainable development",
-      title: "Sustainable Development",
+      title: "Sustainability",
       description:
         "My visual storytelling in sustainable development highlights projects and initiatives aimed at balancing economic growth with environmental stewardship. Through my lens, I showcase innovative solutions and the commitment to creating a sustainable future.",
       image:
@@ -80,7 +80,7 @@ const Home = () => {
       description:
         "My portrait photography is a celebration of individuality and identity. Each portrait I capture tells a unique story, reflecting the personality, heritage, and aspirations of my subjects, bringing their stories to life with authenticity and depth. \n Notably, the project exhibited in Barcelona, in partnership with the Nigeria Indigenous Women in Mining and Natural Resources Organization (Niwimnro) and MSV Studios, featured compelling stories on artisanal women in mining, shedding light on their integral roles and contributions.These exhibitions and book launches have provided a platform to educate and inspire, showcasing the importance of these resources.",
       image:
-        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736152640/drey/portraits/DSC09812_knyh31.jpg",
+        "https://res.cloudinary.com/dwsbh0v8b/image/upload/v1736150752/drey/portraits/DSC09545_nqhvum.jpg",
     },
     {
       id: "exhibition",

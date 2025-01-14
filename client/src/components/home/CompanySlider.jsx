@@ -83,7 +83,7 @@ const CompaniesSlider = () => {
   }, [controls]);
 
   return (
-    <div className="relative h-[50vh] w-full overflow-hidden bg-black">
+    <div className="relative h-[50vh] w-full overflow-hidden bg-white">
       {/* Background grid pattern */}
       <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 opacity-20">
         {[1, 2, 3, 4].map((_, index) => (
@@ -93,7 +93,7 @@ const CompaniesSlider = () => {
 
       {/* Section Title */}
       <div className="absolute top-8 left-8">
-        <h2 className="text-4xl md:text-6xl font-extralight text-white mb-2">
+        <h2 className="text-4xl md:text-6xl font-extralight text-black mb-2">
           Companies
         </h2>
         <p className="text-white/60 text-sm md:text-base"></p>
@@ -109,7 +109,7 @@ const CompaniesSlider = () => {
           {doubledCompanies.map((company, index) => (
             <motion.div
               key={index}
-              className="relative flex-shrink-0 w-40 md:w-64 bg-black backdrop-blur-sm rounded-lg p-2 md:p-6 border border-white/10 hover:border-white/20 transition-colors"
+              className="relative flex-shrink-0 w-40 md:w-64 backdrop-blur-sm rounded-lg p-2 md:p-6 transition-colors"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.2 }}
             >

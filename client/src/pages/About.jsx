@@ -167,10 +167,10 @@ const AboutPage = () => {
                     Notable Achievements
                   </h2>
                   <p className="text-gray-300 leading-relaxed mb-6 text-xs md:text-sm">
-                    Drey's publications on Africa's mineral wealth including
-                    gold and iron ore, alongside his role as the official
-                    storyteller for Nigeria’s Ministry of Mines and Steel
-                    Development highlight the challenges and progress in
+                    Drey's publications on Africa&apos;s mineral wealth
+                    including gold and iron ore, alongside his role as the
+                    official storyteller for Nigeria’s Ministry of Mines and
+                    Steel Development highlight the challenges and progress in
                     Nigeria's mining sector while capturing the Minister’s
                     efforts and achievements.
                   </p>
