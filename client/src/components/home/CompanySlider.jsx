@@ -94,7 +94,7 @@ const CompaniesSlider = () => {
       {/* Section Title */}
       <div className="absolute top-8 left-8">
         <h2 className="text-4xl md:text-6xl font-extralight text-black mb-2">
-          Companies
+          Clients
         </h2>
         <p className="text-white/60 text-sm md:text-base"></p>
       </div>

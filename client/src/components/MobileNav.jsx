@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Instagram, Twitter, Mail, Linkedin } from "lucide-react";
+import { X, Instagram, Twitter, Linkedin } from "lucide-react";
 import navLinks from "../../utils/navlinks";
 
 function MobileNav({ isMenuOpen, setIsMenuOpen }) {
